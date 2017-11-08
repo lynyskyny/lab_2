@@ -26,7 +26,7 @@ public:
     void save(QString f_name);
     void load(QString f_name);
     void show();
-    int countMoney(Date d1, Time t1, Date d2, Time t2);
+    int countMoney(Date date1, Time time1, Date date2, Time time2);
 private:
     Node *first, *last;
     int sizeOf;
