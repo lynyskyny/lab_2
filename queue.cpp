@@ -127,7 +127,7 @@ int Queue::countMoney(Date date1, Time time1, Date date2, Time time2)
 
 Queue::~Queue()
 {
-    Node *del = first, *temp = first->next;
+    Node *del = first, *temp = first;
     while (temp->next)
     {
         temp=del->next;
