@@ -28,7 +28,7 @@ class Buy
 public:
     Buy();
     Buy(Time _time, Date _date, int _price);
-    Buy(const Buy& a);
+    Buy(const Buy &a);
     ~Buy();
     Time getTime();
     Date getDate();

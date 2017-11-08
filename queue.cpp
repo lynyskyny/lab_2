@@ -74,7 +74,9 @@ void Queue::save(QString f_name)
     QDataStream stream(&file);
     for(Node* temp = first; temp; temp=temp->next)
     {
-        stream<<QString::number(temp->data.getDate().day)+"/"+QString::number(temp->data.getDate().month)+"/"+QString::number(temp->data.getDate().year)<<QString::number(temp->data.getTime().hours)+":"+QString::number(temp->data.getTime().minutes)+":"+QString::number(temp->data.getTime().seconds)<<QString::number(temp->data.getPrice());
+        stream<<QString::number(temp->data.getDate().day)+"/"+QString::number(temp->data.getDate().month)+"/"+QString::number(temp->data.getDate().year)
+        <<QString::number(temp->data.getTime().hours)+":"+QString::number(temp->data.getTime().minutes)+":"+QString::number(temp->data.getTime().seconds)
+        <<QString::number(temp->data.getPrice());
     }
     file.close();
 }
@@ -103,14 +105,14 @@ Buy* Queue::front()
     return &(first->data);
 }
 
-int Queue::countMoney(Date d1, Time t1, Date d2, Time t2)
+int Queue::countMoney(Date date1, Time time1, Date date2, Time time2)
 {
     Node *temp = first;
     int result = 0;
-    int date_low_bound = d1.year*10000+d1.month*100+d1.day;
-    int date_high_bound = d2.year*10000+d2.month*100+d2.day;
-    int time_low_bound = t1.hours*10000+t1.minutes*100+t1.seconds;
-    int time_high_bound = t2.hours*10000+t2.minutes*100+t2.seconds;
+    int date_low_bound = date1.year*10000+date1.month*100+date1.day;
+    int date_high_bound = date2.year*10000+date2.month*100+date2.day;
+    int time_low_bound = time1.hours*10000+time1.minutes*100+time1.seconds;
+    int time_high_bound = time2.hours*10000+time2.minutes*100+time2.seconds;
     while(temp)
     {
         int date_curr = temp->data.getDate().year*10000+temp->data.getDate().month*100+temp->data.getDate().day;
@@ -125,5 +127,12 @@ int Queue::countMoney(Date d1, Time t1, Date d2, Time t2)
 
 Queue::~Queue()
 {
-
+    Node *del = first, *temp = first->next;
+    while (temp->next)
+    {
+        temp=del->next;
+        delete del;
+        del = temp;
+    }
+    delete del;
 }
