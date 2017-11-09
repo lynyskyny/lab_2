@@ -15,11 +15,13 @@ int main()
     queue.push(Buy(Time(12, 9, 11), Date(8,2,2001), 97));
     queue.push(Buy(Time(21, 21, 0), Date(1,8,2002), 621));
     assert(queue.front()->getPrice() == 32);
-    assert(queue.countMoney(Date(24,9,2014), Time(0,0,0), Date(18,9,2015), Time(0,0,1))==332+104);
+    assert(queue.countMoney(Date(24,9,2014), Time(0,0,0), Date(18,9,2015),
+                            Time(0,0,1))==332+104);
     assert(queue.pop().getPrice()==32);
     assert(queue.size()==4&&queue.front()->getPrice()==332);
     Queue copy = queue;
-    assert(queue.size()==copy.size()&&queue.front()->getPrice()==copy.front()->getPrice());
+    assert(queue.size()==copy.size()&&queue.front()->getPrice()
+           ==copy.front()->getPrice());
     return 0;
 }
 

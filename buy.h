@@ -7,7 +7,8 @@ using namespace std;
 
 struct Date
 {
-    Date (int _day, int _month, int _year) : day(_day), month(_month), year(_year){}
+    Date (int _day, int _month, int _year) :
+        day(_day), month(_month), year(_year){}
     Date() {}
     int day;
     int month;
@@ -16,7 +17,8 @@ struct Date
 
 struct Time
 {
-    Time (int _hours, int _minutes, int _seconds) : hours(_hours), minutes(_minutes), seconds(_seconds){}
+    Time (int _hours, int _minutes, int _seconds) :
+        hours(_hours), minutes(_minutes), seconds(_seconds){}
     Time () {}
     int hours;
     int minutes;
